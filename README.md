@@ -24,8 +24,11 @@ pollute_data = read.table("C:\\Users\\Tanu\\Desktop\\R\\DescriptiveAnalytics\\po
 #Names of the columns
 names(pollute_data)
 
-summary(ozone_data)			#Basic summary
-str(pollute_data)				#Look at structure of data (i.e. datatypes)
+#Basic summary
+summary(ozone_data)		
+
+#Look at structure of data (i.e. datatypes)
+str(pollute_data)				
 
 #Number of missing values in each columns
 sum(is.na(pollute_data$Pollution))
