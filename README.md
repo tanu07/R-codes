@@ -48,7 +48,7 @@ pollute_data[57,4]
 #Leave the column value blank
 pollute_data[57,]
 
-#if you want first three columns onlu
+#if you want first three columns only
 pollute_data[57,1:3]
 pollute_data[57,c(1,2,3)]
 pollute_data[57,c("Pollution","Temp","Industry")]
