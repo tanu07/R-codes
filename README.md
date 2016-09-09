@@ -103,10 +103,15 @@ qqline(pollute_data$Wet.days, lty=2)
 
 #Shapiro Wilk test for normality
 shapiro.test(pollute_data$Pollution)
+
 shapiro.test(pollute_data$Temp)
+
 shapiro.test(pollute_data$Industry)
+
 shapiro.test(pollute_data$Population)
+
 shapiro.test(pollute_data$Wind)
+
 shapiro.test(pollute_data$Wet.days)
 
 
