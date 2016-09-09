@@ -69,10 +69,15 @@ pairs(pollute_data, panel=panel.smooth)
 
 #Histogram
 hist(pollute_data$Pollution, main="Pollution")
+
 hist(pollute_data$Temp, main="Temp")
+
 hist(pollute_data$Industry, main="Industry")
+
 hist(pollute_data$Population, main="Population")
+
 hist(pollute_data$Wind, main="Wind")
+
 hist(pollute_data$Wet.days, main="Wet.days")
 
 
