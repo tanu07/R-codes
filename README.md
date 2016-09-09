@@ -32,10 +32,15 @@ str(pollute_data)
 
 #Number of missing values in each columns
 sum(is.na(pollute_data$Pollution))
+
 sum(is.na(pollute_data$Temp))
+
 sum(is.na(pollute_data$Industry))
+
 sum(is.na(pollute_data$Population))
+
 sum(is.na(pollute_data$Wind))
+
 sum(is.na(pollute_data$Wet.days))
 
 #Number of Unique values in a column
