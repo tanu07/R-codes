@@ -47,8 +47,8 @@ pollute_data[8,1]
 #Row 57, Column 4
 pollute_data[57,4]
 
-#What about a specific record?
-#Leave the column value blank
+
+#What about a specific record? -Leave the column value blank
 pollute_data[57,]
 
 #if you want first three columns only
