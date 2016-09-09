@@ -117,6 +117,7 @@ shapiro.test(pollute_data$Wet.days)
 
 #How about Skewness and Kurtosis
 skew(pollute_data)
+
 kurtosi(pollute_data)
 
 
