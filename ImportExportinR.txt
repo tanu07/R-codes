@@ -1,0 +1,34 @@
+wd = "C:\\Users\\consult\\Desktop\\Spring 2016\\R\\BasicCommands"
+setwd(wd)
+
+#Importing CaliforniaHospitalData.csv
+datatemp1 = paste(wd, "\\CaliforniaHospitalData.csv", sep="")
+data1 = read.table(datatemp1, header=T, sep=",", quote="\"")
+names(data1)
+head(data1)
+names(data1)
+
+
+#Importing CaliforniaHospitalData_Personnel.txt
+datatemp2 = paste(wd, "\\CaliforniaHospitalData_Personnel.txt", sep="")
+data2 <- read.table(datatemp2,header=T, sep = "\t", quote="\"")
+names(data2)
+
+#Merging two data sets
+finaldata <- merge(data1, data2, by="HospitalID")
+names(finaldata)
+nrow(finaldata)
+edit(finaldata)
+
+#Removal of Columns
+finaldata1 <- finaldata[c(-4,-15,-19)]
+names(finaldata1)
+edit(finaldata1)
+
+
+#Subsetting
+finaldata2 <- finaldata1[((finaldata1$Teaching == "Small/Rural")&(finaldata1$AvlBeds>=15)&(finaldata1$OperInc>=0)),]
+edit(finaldata2)
+nrow(finaldata2)
+
+write.table(finaldata2, "hospital_data_new.txt", sep="\t")
