@@ -1,0 +1,102 @@
+#Set the working directory
+wd = "C:\\Users\\consult\\Desktop\\Fall 2016\\RandPyth\\THA\\THA4"
+setwd(wd)
+#install.packages("psych")
+#install.packages("ggplot2")
+#install.packages("Hmisc")
+#install.packages("tree")
+#library(foreign)
+library(psych)
+
+#library(ggplot2)
+library(tree)
+#library(Hmisc)
+
+###################
+###Read the file###
+###################
+temp = paste(wd, "\\hospital_employee_data.txt", sep="")
+hospital_data = read.table(temp, header =T, sep="\t")
+
+str(hospital_data)
+
+#############################################################################
+###Reorder the columns to bring target variable Operating Revenue as Column1#
+#############################################################################
+hospital_data_target1 = hospital_data[c(13,1,2,3,4,5,6,7,8,9,10,11,12,14,15,
+                                        16,17,18,19,20,21,22,23)]
+str(hospital_data_target1)
+
+##############################################################
+###Create a Regression tree with Operating Income as target###
+##############################################################
+#### This tree function uses binary recursive partitioning
+#### Deviance is the default, but you can use Gini Index
+#### The first column in your data is assumed to be the
+#### target variable
+#### It is worthwhile to note that any factor variables in predictors can have
+#### Maximum of 32 levels, so consider regrouping if your 
+#### have more than 32 levels.
+#### removing hospital id, name, zip, website, last name, workid, first name
+
+hospital_data_target1 = hospital_data_target1[c(1,6,7,8,9,10,11,12,13,14)]
+                                       
+str(hospital_data_target1)
+unique(hospital_data_target1$TypeControl)
+hospital_data_target1_tree = tree(hospital_data_target1)
+hospital_data_target1_tree
+
+plot(hospital_data_target1_tree)
+text(hospital_data_target1_tree)
+
+################################################################################
+###Create a Regression tree with Operating revenue as the target variable now###
+################################################################################
+ 
+hospital_data_target2 = hospital_data[c(12,5,6,7,8,9,10,11,13,14)]
+
+str(hospital_data_target2)
+
+hospital_data_tree2 = tree(hospital_data_target2)
+
+hospital_data_tree2
+plot(hospital_data_tree2)
+text(hospital_data_tree2)
+
+#################################################
+#=================Tree Analysis=================#
+# Use a basic tree function to demonstrate.	#
+# Classification tree : Target : Typecontrol	#
+#################################################
+str(hospital_data)
+hospital_data_classdata = hospital_data[c(5,6,7,8,9,10,11,12,13,14)]
+hospital_data_classtree1 = tree(TypeControl~.,hospital_data_classdata, mindev=1e-6, minsize=2)
+hospital_data_classtree1
+
+#####################################################
+#=================Plotting the Tree=================#
+#####################################################
+plot(hospital_data_classtree1)
+text(hospital_data_classtree1)
+summary(hospital_data_classtree1)
+
+#################################################
+#=================Tree Analysis=================#
+# Classification tree : Target : DonorType	#
+#################################################
+hospital_data_classtree2 = tree(DonorType~.,hospital_data_classdata, mindev=1e-6, minsize=2)
+hospital_data_classtree2
+
+#####################################################
+#=================Plotting the Tree=================#
+#####################################################
+plot(hospital_data_classtree2)
+text(hospital_data_classtree2)
+summary(hospital_data_classtree2)
+
+unique(hospital_data_classdata$DonorType)
+
+
+
+
+
